@@ -1,0 +1,22 @@
+volumes:
+  local_pgdata:
+
+services:
+  db:
+    image: postgres
+    container_name: pg_tractr
+    restart: always
+    ports:
+      - '5440:5432'
+    environment:
+      POSTGRES_USER: maxdry
+      POSTGRES_PASSWORD: rB8x672URmC6bt
+      POSTGRES_DB: tractr
+    networks:
+      - mynetwork
+    volumes:
+      - local_pgdata:/var/lib/postgresql/data
+
+networks:
+  mynetwork:
+    external: true
